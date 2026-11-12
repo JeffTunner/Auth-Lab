@@ -36,7 +36,7 @@ public class AuthController {
         if(id != null) authService.logout(UUID.fromString(id));
         ResponseCookie clear = ResponseCookie.from("SESSION_ID", "")
                 .httpOnly(true).path("/").maxAge(0).build();
-        return (ResponseEntity<String>) ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, clear.toString());
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, clear.toString()).body("Logged Out");
     }
 
     @GetMapping("/me")
